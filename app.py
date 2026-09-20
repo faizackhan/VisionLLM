@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
+import base64
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "advisor" / "data"
@@ -15,6 +16,32 @@ CREATOR_URL = "https://faizackhan.github.io"
 REPO_URL = "https://github.com/faizackhan/VisionLLM"
 
 st.set_page_config(page_title="Vision", page_icon="💎")
+
+
+def svg_uri(svg):
+    return "data:image/svg+xml;base64," + base64.b64encode(svg.strip().encode()).decode()
+
+
+GEM_AVATAR = svg_uri("""
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 -2 84 84">
+  <polygon points="28,2 10,20 26,30" fill="#F0C43C"/>
+  <polygon points="28,2 48,14 26,30" fill="#F9DF75"/>
+  <polygon points="10,20 8,52 26,30" fill="#E0AE22"/>
+  <polygon points="48,14 52,44 26,30" fill="#EDBB2E"/>
+  <polygon points="8,52 30,78 26,30" fill="#D19A17"/>
+  <polygon points="52,44 30,78 26,30" fill="#E3A91F"/>
+</svg>
+""")
+
+USER_AVATAR = svg_uri("""
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="28" fill="#C4AE84" stroke="#A89878" stroke-width="3"/>
+</svg>
+""")
+
+
+def avatar_for(role):
+    return GEM_AVATAR if role == "assistant" else USER_AVATAR
 
 GEM = """
 <svg width="58" height="78" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
@@ -232,13 +259,13 @@ if not messages:
     st.markdown(HERO, unsafe_allow_html=True)
 
 for m in messages:
-    with st.chat_message(m["role"]):
+    with st.chat_message(m["role"], avatar=avatar_for(m["role"])):
         st.markdown(m["content"])
         if m.get("result"):
             show_result(m["result"])
 
 if q:
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar=GEM_AVATAR):
         try:
             with st.spinner("Searching and checking sources..."):
                 r = answer(q, use_grader=use_grader)
