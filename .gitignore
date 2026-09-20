@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.DS_Store
+.env
+chroma_courses/
+chroma_db/
+email_archive/
+advisor/data/*.json
+advisor/data/raw/
+advisor/data/policies/
+advisor/data/private/
+credentials.json
+token.json
+emails.json
+chunks.json
+*.sqlite3
+.streamlit/secrets.toml
