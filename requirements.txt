@@ -1,0 +1,6 @@
+streamlit
+chromadb
+ollama
+networkx
+requests
+beautifulsoup4
