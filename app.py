@@ -15,7 +15,7 @@ CHAT_FILE = DATA / "private" / "chats.json"
 CREATOR_URL = "https://faizackhan.github.io"
 REPO_URL = "https://github.com/faizackhan/VisionLLM"
 
-st.set_page_config(page_title="Vision", page_icon="💎")
+st.set_page_config(page_title="Vision", page_icon="💎", initial_sidebar_state="expanded")
 
 
 def svg_uri(svg):
@@ -69,7 +69,9 @@ CSS = """
   font-family: 'Alegreya Sans', sans-serif;
 }
 [data-testid="stHeader"] { background: transparent; }
-[data-testid="stToolbar"], [data-testid="stDecoration"], footer { display: none; }
+[data-testid="stToolbarActions"], [data-testid="stMainMenu"], .stAppDeployButton, [data-testid="stDecoration"], footer { display: none; }
+[data-testid="stExpandSidebarButton"], [data-testid="collapsedControl"] { display: flex !important; visibility: visible !important; }
+[data-testid="stExpandSidebarButton"] *, [data-testid="collapsedControl"] * { color: #B5772E !important; }
 
 /* sidebar */
 [data-testid="stSidebar"] { background: #CBB99B; }
