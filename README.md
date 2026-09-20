@@ -40,7 +40,7 @@ question ──► rag.py ──► course codes? ──► graph facts (exact p
 Requires [Ollama](https://ollama.com) and Python (developed with 3.12).
 
 ```bash
-git clone https://github.com/<your-username>/VisionLLM.git
+git clone https://github.com/faizackhan/VisionLLM.git
 cd VisionLLM
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt

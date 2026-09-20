@@ -12,7 +12,7 @@ DATA = ROOT / "advisor" / "data"
 CHAT_FILE = DATA / "private" / "chats.json"
 
 CREATOR_URL = "https://faizackhan.github.io"
-REPO_URL = "https://github.com/your-username/your-repo"
+REPO_URL = "https://github.com/faizackhan/VisionLLM"
 
 st.set_page_config(page_title="Vision", page_icon="💎")
 
